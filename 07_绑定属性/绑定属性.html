@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绑定样式</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .a1 {
+      color: red;
+      width: 300px;
+      height: 300px;
+    }
+
+    .a2 {
+      color: blue;
+      width: 300px;
+      height: 300px;
+    }
+
+    .b1 {
+      border: 5px solid black;
+    }
+
+    .b2 {
+      background-color: pink;
+    }
+
+    .b3 {
+      border-radius: 10px;
+      box-shadow: 0px 0px 30px black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 字符串写法，适用于：样式类名不确定，需要动态指定 -->
+    <div class="a1" :class="mood" @click="changeMood">{{name}}</div><br><br>
+
+    <!-- 数组写法，适用于：要绑定的样式个数不确定，名字也不确定 -->
+    <div class="a1" :class="classArr" @click="shiftClass">{{name}}</div><br><br>
+
+    <!-- 对象写法，适用于：要绑定的样式个数确定，名字也确定，需要动态决定用不用 -->
+    <div class="a1" :class="classObj" @click="changeObj">{{name}}</div><br><br>
+
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      name: 'Hello',
+      mood: 'b1',
+      classArr: ['b1', 'b2', 'b3'],
+      classObj: {
+        b1: false,
+        b2: false,
+      }
+    },
+    methods: {
+      //改变mood值为d2
+      changeMood () {
+        this.mood = 'b2'
+      },
+
+      //删除一个样式
+      shiftClass () {
+        this.classArr.shift()
+      },
+
+      //显示对象中样式
+      changeObj () {
+        this.classObj.b1 = true;
+        this.classObj.b2 = true;
+      }
+    },
+  })
+</script>
+
+</html>

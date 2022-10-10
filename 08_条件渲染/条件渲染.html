@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/vue.js"></script>
+  <title>条件渲染</title>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 条件渲染 -->
+    <!-- v-show 适用于频率较高的场景 -->
+    <h1 v-show="a1">Hello</h1>
+
+    <!-- v-if 适用于频率较低的场景 -->
+    <h2 v-if="a2">World</h2>
+
+    <!-- v-else-if 与v-if结构不能被打断 -->
+    <h2 v-else-if="a3">111111</h2>
+
+    <!-- v-else -->
+    <h2 v-else>222222</h2>
+
+    <!-- template只能和v-if一起使用 -->
+    <template v-if="n===1">
+      <h2>A1</h2>
+      <h2>A2</h2>
+      <h2>A3</h2>
+    </template>
+
+
+  </div>
+
+</body>
+<script>
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      a1: false,
+      a2: false,
+      a3: false,
+
+      n: 1
+    },
+  })
+</script>
+
+</html>
