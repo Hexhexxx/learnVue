@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue监测数据改变的原理</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2>学校:{{name}}</h2>
+    <h2>地址:{{location}}</h2>
+    <hr>
+    <button @click="addSex">添加性别</button>
+    <h2>姓名：{{student.name}}</h2>
+    <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+    <h2>年龄：{{student.age}}</h2>
+
+  </div>
+
+</body>
+
+<script>
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      name: '科院',
+      location: '慈溪',
+      student: {
+        name: '张三',
+        age: '18',
+      }
+    },
+    methods: {
+      addSex () {
+        //vm.$set(vm._data.student,'sex','女')
+        //Vue.set(vm._data.student,'sex','女')
+        //注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。
+        Vue.set(this.student, 'sex', '男')
+      }
+    },
+
+  })
+
+
+</script>
+
+</html>

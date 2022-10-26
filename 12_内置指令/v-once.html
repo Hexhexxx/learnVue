@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-once</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 
+      v-once
+        v-once所在节点在初次渲染后，就视为静态内容了
+        之后的数据不会引起v-once所在结构的更新，可用于优化性能
+    -->
+    <h2 v-once>初始的n：{{n}}</h2>
+    <h2>当前的n：{{n}}</h2>
+    <button @click="n++">点我n+1</button>
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      n: 1,
+    },
+  })
+</script>
+
+</html>
